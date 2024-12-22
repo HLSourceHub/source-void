@@ -1,0 +1,362 @@
+// All file paths are relative to "SteapApps/SourceMods/Void/sound/" folder
+// Folders should be separated with the "/" separator, not the "\" separator!
+// See http://developer.valvesoftware.com/wiki/Soundscripts for more details
+
+"Hope.Shoot"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"	"Hope_Shoot.wav"
+	//"rndwave"
+	//{
+	//	"wave"	"Magic_Spell_EnergyBall1.wav"
+	//	"wave"	"Magic_Spell_EnergyBall2.wav"
+	//}
+}
+"Hope.Impact"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"0.6"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"	"Hope_Impact.wav"
+}
+"Hope.Return"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"	"Hope_Return.wav"
+}
+"Hope.Unavailable"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"1.0"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"	"Hope_Unavailable.wav"
+}
+
+"Void.ItemPickup"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.3"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Item_Pickup.wav"
+}
+"Void.ItemSelect"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.3"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Item_Select.wav"
+}
+"Void.ItemDrop"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.3"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Item_Drop.wav"
+}
+
+
+"Void.PlayerDeath"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"1.0"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Player_Death.wav"
+}
+"Void.PlayerDamage"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.5"
+	//"pitch"		"90,110"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"		"Player_Damage1.wav"
+		"wave"		"Player_Damage2.wav"
+		"wave"		"Player_Damage3.wav"
+	}
+}
+"Void.PlayerSprint"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"1.0"
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"		"Player_Sprint.wav"
+}
+
+"Journal.ItemMouseOver"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.3"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Menu_Click24.wav"
+}
+"Journal.Open"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.5"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Journal_Open.wav"
+}
+"Journal.Close"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.5"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Journal_Close.wav"
+}
+
+"Tutorial.TomeOpen"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.8"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Book_LargeOpen.wav"
+}
+"Tutorial.TomeClose"
+{
+	"channel"	"CHAN_AUTO"
+	"volume"	"0.8"
+	"soundlevel"  "SNDLVL_NORM"
+
+	"wave"	"Book_LargeClose.wav"
+}
+
+
+"NPC_Denial.LeapAttack"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.400"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/leap1.wav"
+}
+"NPC_Denial.FootstepRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_IDLE"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/foot4.wav"
+	}
+}
+"NPC_Denial.FootstepLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_IDLE"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/foot1.wav"
+		"wave"	"npc/fast_zombie/foot2.wav"
+		"wave"	"npc/fast_zombie/foot3.wav"
+	}
+}
+"NPC_Denial.AttackHit"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/claw_strike1.wav"
+		"wave"	"npc/fast_zombie/claw_strike2.wav"
+		"wave"	"npc/fast_zombie/claw_strike3.wav"
+	}
+}
+"NPC_Denial.AttackMiss"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/claw_miss1.wav"
+		"wave"	"npc/fast_zombie/claw_miss2.wav"
+	}
+}
+"NPC_Denial.Attack"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/leap1.wav"
+}
+"NPC_Denial.Pain"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"		"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/leap1.wav"
+}
+"NPC_Denial.Die"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"		"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/wake1.wav"
+}
+"NPC_Denial.Idle"
+{
+	"channel"		"CHAN_WEAPON"
+	"volume"		"0.600"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/idle1.wav"
+		"wave"	"npc/fast_zombie/idle2.wav"
+		"wave"	"npc/fast_zombie/idle3.wav"
+	}
+}
+"NPC_Denial.AlertFar"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/fz_alert_far1.wav"
+}
+"NPC_Denial.AlertNear"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/fz_alert_close1.wav"
+}
+"NPC_Denial.GallopLeft"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/foot1.wav"
+		"wave"	"npc/fast_zombie/foot2.wav"
+	}
+}
+"NPC_Denial.GallopRight"
+{
+	"channel"		"CHAN_BODY"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"rndwave"
+	{
+		"wave"	"npc/fast_zombie/foot3.wav"
+		"wave"	"npc/fast_zombie/foot4.wav"
+	}
+}
+"NPC_Denial.Scream"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/fz_scream1.wav"
+}
+"NPC_Denial.RangeAttack"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"95, 105"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/leap1.wav"
+}
+"NPC_Denial.Frenzy"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/fz_frenzy1.wav"
+}
+"NPC_Denial.Moan1"
+{
+	"channel"		"CHAN_STATIC"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/breathe_loop1.wav"
+}
+"NPC_Denial.Gurgle"
+{
+	"channel"		"CHAN_VOICE"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"npc/fast_zombie/gurgle_loop1.wav"
+}
+"NPC_Denial.NoSound"
+{
+	"channel"		"CHAN_ITEM"
+	"volume"		"VOL_NORM"
+	"pitch"			"PITCH_NORM"
+
+	"soundlevel"	"SNDLVL_NORM"
+
+	"wave"			"common/null.wav"
+}

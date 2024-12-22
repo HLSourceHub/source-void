@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/b_sapling_icon"
+	"$translucent"		"1"
+}

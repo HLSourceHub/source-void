@@ -1,0 +1,29 @@
+"VertexLitGeneric"
+{
+//	"$baseTexture" "models/weapons/hand_UI_ring_3"
+	"$baseTexture" "vgui/white"
+	"$translucent" "1"
+	
+	"$detail" "models/weapons/hand_UI_ring_3"
+	"$detailscale" "1"
+	"$detailblendfactor" .01
+	"$detailblendmode" 5
+	
+	"Proxies"
+	{
+		VoidRip
+		{
+			resultVar	$detailblendfactor // The shader parameter to be manipulated
+			ripID		2
+		}
+		VoidRip
+		{
+			resultVar	$alpha // The shader parameter to be manipulated
+			ripID		2
+		}
+	}	
+
+}
+
+
+

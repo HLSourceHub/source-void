@@ -1,0 +1,7 @@
+"void_decal"
+{
+"$basetexture" "VDecals\Level0Puzzle1voidwarningmessage"
+"$decal" 1
+"$decalscale" 0.5
+"$translucent" 1
+}

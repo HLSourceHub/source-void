@@ -1,0 +1,81 @@
+// Cutscene fields available
+// - "scenecount"  - [Required] Number of scenes 
+// - "skipfadein"  - [Optional] 0 default - Skips the cutscene fade in sequence if set to 1
+// - "skipfadeout" - [Optional] 0 default - Skips the cutscene fade out sequence if set to 1
+// - "1", "2"...   - Settings for each scene
+
+// Scene fields available
+// - "text"           - No text default - Text to display for the frame
+// - "sound"          - No sound default - Optional sound to play
+// - "transitionIn"   - "fadefromblack" default - Transition type to go to this frame from the previous frame
+// - "transitionTime" - 2 seconds default - Amount of time in seconds for transition. Not applicable to "cut" transition
+// - "frameTime"      - 3 seconds default - Amount of time to display the frame (does not include "transitionTime")
+//
+// Transition types available
+// - "fadefromblack" or "fadetoblack" (default)
+// - "fadefromwhite" or "fadetowhite"
+// - "cut"  - forces transitionTime to 0
+// - "dissolve"
+// - "fadefromtransparent" or "fadetotransparent"
+
+"cutscenes"
+{
+	"ending_panel"
+	{
+		"scenecount"	"2"
+		//"skipfadein"	"1"
+		//"skipfadeout"	"1"
+
+		"1" // To be continued...
+		{
+			"text" ""
+			"transitionIn" "fadefromtransparent"
+			"transitionTime" "4"
+			"frameTime" "1"
+		}
+		"2" // Transparent frame
+		{
+			"text" ""
+			"transitionIn" "fadefromtransparent"
+			"transitionTime" "4"
+			"frameTime" "0"
+		}
+	}
+
+	"credits_panel"
+	{
+		"scenecount"	"4"
+		"skipfadein"	"1"
+		"skipfadeout"	"1"
+
+		// 136 seconds total time
+		"1" // Credits title
+		{
+			"text" ""
+			"transitionIn" "fadefromtransparent"
+			"transitionTime" "2"
+			"frameTime" "4"
+		}
+		"2"	// Transparent texture
+		{
+			"text" ""
+			"transitionIn" "fadefromtransparent"
+			"transitionTime" "3.5"
+			"frameTime" "115.5"
+		}
+		"3" // Special Thanks
+		{
+			"text" ""
+			"transitionIn" "fadefromtransparent"
+			"transitionTime" "4"
+			"frameTime" "7"
+		}
+		"4" // Black texture
+		{
+			"text" ""
+			"transitionIn" "fadetoblack"
+			"transitionTime" "2"  // Halfway (2 seconds in), the cutscene will end on 136th second
+			"frameTime" "0"
+		}
+	}
+}

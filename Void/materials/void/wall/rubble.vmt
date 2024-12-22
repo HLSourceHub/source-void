@@ -1,0 +1,19 @@
+"LightMappedGeneric"
+{
+	"$basetexture" "void\wall\rubble"
+	"$bumpmap" "void\wall\rubble_NMap"
+//	"$envmapmask" "void\wall\wallSewer_SMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+//	"$envmap" "env_cubemap"
+	"$surfaceprop" "concrete"
+//	"$nocull" "1"
+//	"$translucent" "1" 
+	
+//	"$phong" "1"
+//	"$phongexponent" "33"
+//	"$phongboost" "1"	
+//	$phongexponenttexture "void\wall\wallSewer_SMap"
+	
+//	"$phongfresnelranges"	"[0.05 0.5 1]"
+//	"$halflambert" "1"
+}

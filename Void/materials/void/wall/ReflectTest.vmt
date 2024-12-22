@@ -1,0 +1,6 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "void/wall/ReflectTest"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "reflecthope"
+}

@@ -1,0 +1,16 @@
+"LightMappedGeneric"
+{
+	"$basetexture" "void\wall\metal_dark"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+//	"$envmap" "env_cubemap"
+	"$surfaceprop" "metal"
+//	"$nocull" "1"
+//	"$translucent" "1" 
+	
+	"$phong" "1"
+	"$phongexponent" "33"
+	"$phongboost" "0.1"	
+
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+}

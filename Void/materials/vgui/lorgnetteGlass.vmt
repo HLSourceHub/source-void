@@ -1,0 +1,21 @@
+"UnlitGeneric"
+{
+	"$basetexture" "vgui/lorgnetteGlass"
+	"$translucent" 1
+	"$vertexcolor" 1
+	"$vertexalpha" 1
+	"$ignorez" 1
+	"$no_fullbright" "1"
+	"Proxies"
+	{
+		"AnimatedTexture"
+		{
+			"animatedtexturevar" "$basetexture"
+			"animatedtextureframenumvar" "$frame"
+			"animatedtextureframerate" 2.00
+			"realtime" "1"
+		}
+
+		
+	}
+}

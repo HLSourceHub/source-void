@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/weapons/hand_barehand_clothes"
+	"$bumpmap" "models/weapons/hand_barehand_clothes_Nmap"
+	"$model" "1"
+	
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.02"	
+	//"$lightwarptexture" "Models/weapons/lightwarp"
+	"$phongfresnelranges"	"[0.5 0.5 0.5]"
+}
+
+
+

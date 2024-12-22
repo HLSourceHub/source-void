@@ -1,0 +1,7 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/ceiling/arch_ceiling128Square_dirt"
+	"$normalmap" "celshade/normal64"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "tile"
+}

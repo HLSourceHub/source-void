@@ -1,0 +1,8 @@
+"LightMappedGeneric"
+{
+"$basetexture" "void\EDecals\Roots"
+"$bumpmap" "void\EDecals\Roots_NMap"
+"$decal" 1
+"$decalscale" 0.25
+"$translucent" 1
+} 

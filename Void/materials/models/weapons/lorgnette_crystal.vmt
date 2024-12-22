@@ -1,0 +1,16 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/weapons/lorgnette_crystal"
+//	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$envmap" "env_cubemap"
+	"$surfaceprop" "glass"
+//	"$nocull" "1"
+//	"$translucent" "1" 
+	
+	"$phong" "1"
+	"$phongexponent" "100"
+	"$phongboost" "1"	
+
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+}

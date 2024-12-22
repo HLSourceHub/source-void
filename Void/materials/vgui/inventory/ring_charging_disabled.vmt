@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/overlay_charging_disabled"
+	"$translucent"		"1"
+	"$additive"			"1"
+}

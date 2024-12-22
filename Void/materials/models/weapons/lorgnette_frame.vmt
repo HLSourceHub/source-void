@@ -1,0 +1,19 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/weapons/lorgnette_frame"
+	"$bumpmap" "models/weapons/lorgnette_frame_Nmap.vtf"
+//	"$envmapmask" "void\wall\metal_reflective_SMap"
+//	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[0.5 0.5 0.5]" 
+	"$surfaceprop" "metal"
+//	"$nocull" "1"
+//	"$translucent" "1" 
+	
+	"$phong" "1"
+	"$phongexponent" "150"
+	"$phongboost" "1"	
+
+	"$phongfresnelranges"	"[.5 .3 .5]"
+	"$halflambert" "0"
+}

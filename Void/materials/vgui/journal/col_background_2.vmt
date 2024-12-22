@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/journal/col_background_past"
+	"$alphatest"		"1"	
+//	"$translucent"		"1"	
+}

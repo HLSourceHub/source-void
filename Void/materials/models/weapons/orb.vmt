@@ -1,0 +1,24 @@
+"UnLitGeneric"
+{
+	"$baseTexture" "models/weapons/orb_glow_diffuse"
+	//"$bumpmap" "models/weapons/hand_ref_originNormalsMap"
+	"$halflambert" "1"
+	"$translucent" "1"
+	"$model" "1"
+	//"$selfillum" "1"
+	//"$selfillummask" "models/weapons/orb_glow_alpha"
+
+	
+	//"$phong" "1"
+	//"$phongexponent" "0"
+	//"$phongboost" "0"	
+	////"$lightwarptexture" "Models/weapons/cellshade3b"
+	//"$phongfresnelranges"	"[0.05 0.5 1]"
+
+	
+	
+	
+}
+
+
+

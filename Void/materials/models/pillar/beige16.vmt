@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/pillar/Beige16_DMap"
+	"$bumpmap" "models/pillar/normal64"
+	"$model" "1"
+	
+	"$phong" "1"
+	"$phongexponent" "0"
+	"$phongboost" "0"	
+	//"$lightwarptexture" "celshade/lightwarp/lightwarp"
+	"$phongfresnelranges"	"[0 0 0]"
+	"$halflambert" "1"	
+}

@@ -1,0 +1,7 @@
+"lightmappedgeneric"
+{
+	"$baseTexture" "void/gating/gating_DMap"
+	"$bumpmap" "void/gating/gating_nMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$alphatest" "1"
+}

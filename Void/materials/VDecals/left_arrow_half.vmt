@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+"$basetexture" "VDecals\decal_left_arrow"
+"$decal" 1
+"$decalscale" 0.5
+"$translucent" 1
+}

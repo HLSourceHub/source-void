@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+"$basetexture" "void\EDecals\cobwebs_D"
+"$decal" 1
+"$decalscale" 0.25
+"$translucent" 1
+}

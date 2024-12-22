@@ -1,0 +1,25 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\architecture\door_dmap"
+	"$bumpmap" "models\architecture\door_nmap"	
+	
+	"$phong" "1"
+	"$phongexponent" "20"
+	"$phongboost" ".3"	
+	"$phongfresnelranges"	"[.3 1 8]"
+	"$halflambert" "0"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}	
+}

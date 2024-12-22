@@ -1,0 +1,391 @@
+// Following path is relative to Hammer.exe's location
+@include "../../../../../SourceMods/Void/halflife2.fgd"
+
+@PointClass sphere() base(Targetname, Parentname) iconsprite("editor/void_hope_trigger.vmt") = void_hope_trigger :
+	"Trigger that activates on any nearby Hope."
+[
+	spawnflags(flags) =
+	[
+		1: "Starts disabled" : 0   // Default off
+	]
+
+	input Toggle(void) : "Toggles the trigger's enabled/disabled state."
+	input Enable(void) : "Enables the trigger."
+	input Disable(void) : "Disables the trigger."
+
+	output OnHopeTrigger(void) : "Triggers repeatedly every <trigger rate> seconds while any Hope remains in the activation radius."
+	output OnHopeStartTouch(void) : "Triggers when any Hope enters the activation radius. Does not re-trigger if a second (or more) Hope enters the radius, only triggers on the first Hope."
+	output OnHopeEndTouch(void) : "Triggers when all Hope leaves the activation radius."
+
+	radius(float) : "Activation radius" : "20" : "The radius around this entity in which nearby Hope will activate."
+	delay(float) : "Delay Before Reset" : "1" : "Amount of time, in seconds, after the void_hope_trigger has triggered before it can be triggered again. If set to -1, it will not trigger again until the next OnHopeStartTouch."
+	killsHope(choices) : "Absorbs Hope" : 0 : "Absorbs all void_hope_projectiles that activates this trigger" =
+	[
+		0 : "Don't absorb activating void_hope_projectile"
+		1 : "Absorb activating void_hope_projectile"
+		2 : "Absorb activating void_hope_projectile and holds it"
+	]
+	particleEffect(string) : "Particle Effect" : : "Name of particle effect to play on absorbing Hope."
+	message(sound) : "Sound Name" : "" : "Name of the GameSound entry for the sound to play on absorbing Hope. Also supports direct .wav filenames."
+]
+
+@PointClass base(Targetname, Parentname) size(-3 -3 -3, 3 3 3) color(255 255 0) sphere() = void_hope_effect :
+	"Hope effect. Will trigger any nearby void_hope_trigger within circular radius, and also any brushes that it touches (cuboid check)."
+[
+	radius(float) : "Activation radius" : 20 : "The radius around this entity which will trigger entities that detect Hope."
+	damageMod(float) : "Damage modifier" : 1 : "The bonus damage modifier on enemies within this entity's radius from Wrath (void_weapon_hand) attack."
+	endRadius(float) : "Target radius" : : "Target activation radius to grow/shrink this effect to."
+	fadeTime(float) : "Fade time" : : "The amount of time it will take to grow/shrink the activation radius."
+	worldID(choices) : "World ID" : 1 : "The ID of the world this entity is in." =
+	[
+		1 : "World 1"
+		2 : "World 2"
+	]
+
+	input SetTargetRadius(float) : "Sets the activation radius to grow/shrink to."
+	input SetFadeTime(float) : "Sets the amount of time it will take to grow/shrink the activation radius."
+	input StartFading(void) : "Start growing/shrinking the fading effect."
+]
+
+@PointClass light() iconsprite("editor/light.vmt") base(Targetname) = void_hope_projectile :
+	"A light ball that the player can pick up. Functions the same as the projectile the player shoots out."
+[
+	hopelevel(choices) : "Hope level" : 0 : "The level of Hope this projectile is." =
+	[
+		0 : "Hope level 1"
+		1 : "Hope level 2"
+		2 : "Hope level 3"
+	]
+	_light(color255) : "Light color" : "255 255 255 200" : "Not used, overriden by Hope Level parameters (don't bother changing this)."
+	lifetime(float) : "Lifetime" : "-1" : "Time in seconds after which this entity kills itself. Set to -1 to disable."
+
+	output OnPlayerRetrieve(void) : "Triggers when a player retrieves this projectile (when it starts flying)."
+]
+
+@PointClass base(Weapon) studio("models/weapons/v_hand.mdl") = void_weapon_hand : "The hand that shoots Wrath and Hope." []
+
+//@PointClass sphere() light() iconsprite("editor/light.vmt") base(Targetname) = void_ammo_lumen :
+//	"Lumen ammo that is retrievable by players."
+//[
+//	spawnflags(flags) =
+//	[
+//		1: "Starts disabled" : 0   // Default off
+//	]
+//
+//	input Toggle(void) : "Toggles the ammo's enabled/disabled state."
+//	input Enable(void) : "Enables the ammo to be retrieved."
+//	input Disable(void) : "Disables the ammo to be retrieved."
+//
+//	output OnPlayerRetrieve(void) : "Triggers when a player retrieves this ammo (when it starts flying)."
+//
+//	_light(color255) : "Light color" : "255 191 127 200"
+//	radius(float) : "Light radius" : "500" : "Causes the light to fall to exactly zero beyond the light radius distance."
+//	amount(integer) : "Lumen amount" : 10 : "Amount of Lumen to add to player when retrieved."
+//]
+
+@SolidClass base(Trigger, Targetname) = void_trigger_regen_lumen :
+	"A trigger volume that regenerates the Lumen of touching entities that has any weapon that uses Lumen ammo."
+[
+	lumen(integer) : "Lumen" : 1 : "The amount of Lumen to add to entities that touch this trigger."
+	regenRate(float) : "Regen Rate" : 1 : "How often Lumen is added to touching entities (in seconds)."
+
+	input SetLumen(integer) : "Set a new amount of Lumen to add for this trigger."
+	input SetRegenRate(float) : "Set a new regen rate for this trigger."
+
+	output OnRegen(void) : "Fired each time this trigger regens an entity that owns a weapon that uses Lumen ammo. Fires only if any Lumen is actually regenerated (i.e will not fire if the entity is already at max Lumen). Outputs an integer equal to the actual amount of Lumen regenerated. !activator contains the entity that was regenerated."
+]
+
+@PointClass base(Targetname) iconsprite("editor/npc_maker.vmt") = void_npc_maker :
+	"Makes an NPC spawn near the input activator based on direction and distance."
+[
+	minRange(float) : "Minimum Range" : 100 : "Minimum distance the NPC will spawn from the activator."
+	maxRange(float) : "Maximum Range" : 500 : "Maximum distance the NPC will spawn from the activator."
+	angleOffset(float) : "Angle" : 0 : "Angle (between -180 and 180) that the NPC will spawn from the activator. 0 means the NPC will spawn in front of the activator, 90 means the NPC will spawn to the left of the activator, -90 to the right, and -180 or 180 behind."
+
+	input Spawn(string) : "Spawns an NPC, pass in the class of the NPC to spawn (eg. npc_zombie)."
+	input SetMaxRange(float) : "Sets the maximum distance the NPC will spawn from the activator."
+	input SetMinRange(float) : "Sets the minimum distance the NPC will spawn from the activator."
+	input SetAngle(float): "Sets the angle (between -180 and 180) that the NPC will spawn from the activator. 0 means the NPC will spawn in front of the activator, 90 means the NPC will spawn to the left of the activator, -90 to the right, and -180 or 180 behind."
+
+	output OnSpawnNPC(void) : "Fired each time this entity spawns an NPC successfully."
+]
+
+@PointClass base(Targetname, Studiomodel, Parentname, Angles, Global) studio() = void_memory_fragment :
+	"Memory fragment that players can collect."
+[
+	fragmentID(integer) : "Fragment ID" : 0 : "The ID of this memory fragment."
+	rotateSpeed(float) : "Rotation speed" : 0 : "Rotation speed of fragment in degrees per second. Negative for clockwise, positive for anti-clockwise, 0 for not rotating."
+
+	output OnPlayerTouch(void) : "Fired when a player touches this entity."
+]
+
+@PointClass base(Targetname) = void_player_proxy :  "An entity that is used to relay outputs from the player"
+[
+	spawnflags(flags) =
+	[
+		1: "Starts disabled" : 0   // Default off
+	]
+
+	input Toggle(void) : "Toggles the trigger's enabled/disabled state."
+	input Enable(void) : "Enables the trigger."
+	input Disable(void) : "Disables the trigger."
+	input AllowRips(void) : "Allows the player to fire rips with void_weapon_gauntlet."
+	input DisallowRips(void) : "Disallows the player to fire rips with void_weapon_gauntlet."
+	input AllowGlasses(void) : "Allows the player to use glasses with void_weapon_gauntlet."
+	input DisallowGlasses(void) : "Disallows the player to use glasses with void_weapon_gauntlet."
+	input FreezePlayer(void) : "Freeze the player so he cannot do anything (not even mouselook) without pausing the game."
+	input UnfreezePlayer(void) : "Unfreezes the player."
+
+	output OnHopeLaunch(void) : "Fired when a player launches a Hope projectile."
+	output OnHopeRetrieve(void) : "Fired when a player regains ammo from retrieve a Hope projectile."
+	output OnRipLaunch(void) : "Fired when a player fires a Rip."
+	output OnRipLaunchFailCooldown(void) : "Fired when a player fails to fire a Rip due to rips being on cooldown."
+	output OnRipLaunchFailInvFull(void) : "Fired when a player fails to fire a Rip due to inventory full."
+	output OnGlassesUp(void) : "Fired when a player uses his glasses."
+	output OnGlassesDown(void) : "Fired when a player stops using his glasses."
+	output OnItemPickup(integer) : "Triggers when the player picks up a void_prop_physics2 (with a void_weapon_gauntlet). Does not fire for void_prop_collectibles or any other entity. Outputs the key ID of the key that is picked up."
+]
+
+@PointClass base(Targetname, Studiomodel, Parentname, Angles, Global) studio() = void_globe :
+	"Globe entity that can capture and hold Hope and release it at another angle."
+[
+	holderRadius(float) : "Holder radius" : 30 : "How far away the holder rotates from the center of this entity."
+	holderActivationRadius(float) : "Holder activation radius" : 10 : "The activation radius of the holder (a void_hope_trigger) that is rotating around the globe."
+	rotateSpeed(float) : "Rotation speed" : 180 : "Rotation speed of fragment in degrees per second. Negative for clockwise, positive for anti-clockwise, 0 for not rotating."
+	useChaseCam(choices) : "Chasecam" : 0 : "Whether to use chasecam mode on the absorbed Hope. Internally, this entity will create and use a point_viewcontrol." =
+	[
+		0 : "Don't use a chasecam"
+		1 : "Use a chasecam"
+	]
+	chaseCamDuration(float) : "Duration of chase cam" : 5 : "Duration in seconds the chase cam will continue to follow the Hope projectile starting from OnHopeRelease."
+
+	output OnHopeAbsorb(void) : "Fired when the globe absorbs a Hope."
+	output OnHopeRelease(void) : "Fired when a player releases a Hope captured by this entity's holder."
+]
+
+@PointClass sphere() size(-32 -32 -4, 32 32 4) base(Targetname) = void_dark_platform :
+	"A smoky platform that disappears in the presence of Hope"
+[
+	spawnflags(flags) =
+	[
+		1: "Starts disabled" : 0   // Default enabled
+		2: "Starts Non-solid" : 0  // Default solid
+	]
+
+	input Enable(void) : "Enables the platform."
+	input Disable(void) : "Disables the platform."
+
+	radius(float) : "Detection Radius" : 45 : "Radius around the platform where hope will affect the platform"
+	delay(float) : "Delay before reset" : 2 : "Minimum time platform will stay disabled before reacting to hope again"
+	solid_in_hope(choices) : "Solid in Hope" : 0 : "Whether the platform should appear in hope instead" =
+	[
+		0 : "Solid without Hope"
+		1 : "Solid in Hope"
+	]
+
+	output OnHopeStartTouch(void) : "Triggers when any Hope enters the activation radius. Does not re-trigger if a second (or more) Hope enters the radius, only triggers on the first Hope."
+	output OnHopeEndTouch(void) : "Triggers when all Hope leaves the activation radius."
+]
+
+//@SolidClass base(Targetname, Parentname, Origin, EnableDisable, Global) = void_trigger_hope_color :
+//	"A trigger volume that changes the color of any touching Hope projectile."
+//[
+//	_light(color255) : "Light color" : "255 255 255 200" : "The color Hope projectile's light will change to on touching this trigger."
+//
+//	// Inputs
+//	input Toggle(void) : "Toggles this trigger between enabled and disabled states."
+//
+//	output OnColorChange(void) : "Fired whenever a Hope projectile changes color on touching this trigger."
+//]
+
+@NPCClass base(BaseNPC) studio("models/npc/Denial.mdl") = void_npc_denial : "NPC Denial"
+[
+]
+
+@PointClass base(prop_physics) studioprop() sphere(actRadius) sphere(fademindist) sphere(fademaxdist) = void_prop_physics :
+	"This class is the same as prop_physics, except that it has absolutely no motion unless Hope is near it."
+[
+	actRadius(float) : "Activation radius" : "20" : "The radius around this entity in which nearby Hope will activate."
+
+	output OnHopeStartTouch(void) : "Triggers when any Hope enters the activation radius. Does not re-trigger if a second (or more) Hope enters the radius, only triggers on the first Hope."
+	output OnHopeEndTouch(void) : "Triggers when all Hope leaves the activation radius."
+]
+
+@PointClass base(Targetname) = void_hope_proxy :  "An entity that is used to change Hope parameters"
+[
+	input SetChargeUpTime1(float) : "Set the charge up time of Hope level 1."
+	input SetChargeUpTime2(float) : "Set the charge up time of Hope level 2."
+	input SetColor(string) : "Toggles the trigger's enabled/disabled state."
+	input SetActivationRadius1(float) : "Set the activation radius of Hope level 1."
+	input SetActivationRadius2(float) : "Set the activation radius of Hope level 2."
+	input SetLightRadius1(float) : "Set the light radius of Hope level 1."
+	input SetLightRadius2(float) : "Set the light radius of Hope level 2."
+	input SetPlayerActivationRadius1(float) : "Set the player activation radius of Hope."
+	input SetPlayerLightRadius1(float) : "Set the player light radius of Hope."
+	input SetSpeed1(float) : "Set the speed of Hope level 1."
+	input SetSpeed2(float) : "Set the speed of Hope level 2."
+	input SetRetrieveSpeed(float) : "Set the retrieve speed of Hope."
+	input SetLifetime(float) : "Set the lifetime of Hope."
+	input SetDamage(float) : "Set the damage of Hope."
+	input SetGravity(bool) : "Set 1 to enable gravity, 0 to disable."
+	input SetNumBounce(integer) : "Set the number of bounces before it sticks."
+]
+
+@PointClass base(Angles) size(-16 -16 -16, 16 16 16) color(255 255 255) = void_origin_0 :
+	"An entity used to control the parallel world origin. Its origin is used to determine parallel world relative to other parallel worlds"
+[
+]
+
+@PointClass base(Angles) size(-16 -16 -16, 16 16 16) color(255 255 255) = void_origin_1 :
+	"An entity used to control the parallel world origin. Its origin is used to determine parallel world relative to other parallel worlds"
+[
+]
+
+@PointClass base(Angles) size(-16 -16 -16, 16 16 16) color(255 255 255) = void_origin_2 :
+	"An entity used to control the parallel world origin. Its origin is used to determine parallel world relative to other parallel worlds"
+[
+]
+
+@PointClass base(Weapon) studio("models/weapons/v_hand.mdl") = void_weapon_conduit : "The hand that shoots a conduit." []
+
+@PointClass base(Targetname, Angles) studio("models/editor/playerstart.mdl") = void_world_origin :
+	"An entity used to control the parallel world origin. Its origin is used to determine parallel world relative to other parallel worlds"
+[
+	worldID(choices) : "World ID" : 1 : "The ID of the world this entity is in." =
+	[
+		1 : "World 1"
+		2 : "World 2"
+	]
+
+	input TeleportPlayerToWorld(void) : "Forcefully teleports the player to this world (will only teleport if there is no collision)."
+
+	output OnPlayerEnter(void) : "Triggers when the player enters this world."
+	output OnPlayerLeave(void) : "Triggers when the player leaves this world."
+]
+
+@PointClass base(Weapon) studio("models/weapons/v_hand.mdl") = void_weapon_gauntlet : "The gauntlet that opens a dimensional rip." []
+
+@BaseClass base(prop_physics, DisplayText) = Void_Pickable
+[
+	input SetID(integer) : "Changes the ID of the prop to the specified input."
+	input SetModel(string) : "Changes the model of the prop to the specified input."
+	input SetIconTexture(string) : "Changes the UI icon texture of the prop to the specified input."
+]
+
+@PointClass base(Void_Pickable) studioprop() sphere(actRadius) sphere(fademindist) sphere(fademaxdist) = void_prop_physics2 :
+	"This class is the same as prop_physics, except that it can be picked up by the gauntlet weapon and transported across dimensions."
+[
+	keyID(integer) : "Key ID" : 1 : "The key ID of this prop."
+	iconTexture(sprite) : "Icon Texture" : "vgui/inventory/icon_lady_lamp.vmt" : "VMT to use for the UI icon."
+	targetWorldModel(studio) : "Synced Model": : "Dynamic prop model to use for syncing in the other world. Leave empty if not used."
+	targetWorldModelZOffset(float) : "Synced Model Z Offset": "0" : "Additional Z coordinate offset for the dynamic prop if the prop origins aren't playing nice."
+
+	output OnPlayerGauntletUse(void) : "Triggers when the player uses this key (on a void_prop_receiver)."
+	output OnPlayerGauntletDrop(void) : "Triggers when the player drops this key (to the floor)."
+	output OnPlayerGauntletPickup(void) : "Triggers when the player picks up this key (with a void_weapon_gauntlet)."
+]
+
+@PointClass base(Void_Pickable) studioprop() sphere(actRadius) sphere(fademindist) sphere(fademaxdist) = void_prop_collectible :
+	"This class is the same as prop_physics, except that it can be picked up by the gauntlet weapon. Once picked up, it unlocks a collectible and the item disappears from the game."
+[
+	keyID(integer) : "Collectible ID" : 1 : "The collectible ID of this prop."
+	iconTexture(sprite) : "Collectible Texture" : "vgui/inventory/icon_lady_lamp.vmt" : "VMT to use for the collectible."
+
+	output OnPlayerGauntletPickup(void) : "Triggers when the player picks up this collectible (with a void_weapon_gauntlet)."
+]
+
+@PointClass base(prop_dynamic, EnableDisable, DisplayText) sphere(fademindist) sphere(fademaxdist) studioprop() = void_prop_receiver :
+	"A prop_dynamic that acts like a func_button but only if the player is holding a certain void_prop_physics2 in "+
+	"his hands using void_weapon_gauntlet."
+[
+	spawnflags(flags) =
+	[
+		1: "Starts disabled" : 0   // Default off
+	]
+
+	receiveID(integer) : "Receive ID" : 1 : "The key ID that this receiver can receive. If the ID is 0, it doesn't require a key."
+	targetWorldModel(studio) : "Synced Model": : "Dynamic prop model to use for syncing in the other world. Leave empty if not used."
+	targetWorldModelZOffset(float) : "Synced Model Z Offset": "0" : "Additional Z coordinate offset for the dynamic prop if the prop origins aren't playing nice."
+
+	input SetID(integer) : "Changes the receiving ID of the prop to the specified input."
+	input Toggle(void) : "Toggles the receiver's enabled/disabled state to player interaction."
+	input Enable(void) : "Enables the receiver to player interaction."
+	input Disable(void) : "Disables the receiver from player interaction."
+
+	output OnUse(void) : "Triggers when the player successfully uses this prop with the correct key."
+	output OnUseFail(void) : "Triggers when the player fails to use this prop with the correct key."
+]
+
+@SolidClass base(Targetname) = void_func_godray : "Brush entity with godray effect"
+[
+]
+
+@SolidClass base(Targetname, Parentname, Origin, EnableDisable, Global) = void_trigger_propsync :
+	"A trigger volume that syncs props in parallel worlds."
+[
+	filtername(filterclass) : "Filter Name" : : "Filter to use to see if activator triggers me. See filter_activator_name for more explanation."
+	ourWorldID(choices) : "Our World ID" : 2 : "World ID this trigger is in." =
+	[
+		1 : "World 1"
+		2 : "World 2"
+	]
+	targetWorldID(choices) : "Target World ID" : 1 : "World ID we want the synced prop to appear in." =
+	[
+		1 : "World 1"
+		2 : "World 2"
+	]
+
+	// Inputs
+	input Toggle(void) : "Toggles this trigger between enabled and disabled states."
+
+	// Outputs
+	output OnStartTouch(void) : "Fired when an entity starts touching this trigger. The touching entity must pass this trigger's filters to cause this output to fire."
+	output OnStartTouchAll(void) : "Fired when an entity starts touching this trigger, and no other entities are touching it. Only entities that passed this trigger's filters are considered."
+	output OnEndTouch(void) : "Fired when an entity stops touching this trigger. Only entities that passed this trigger's filters will cause this output to fire."
+	output OnEndTouchAll(void) : "Fires when an entity stops touching this trigger, and no other entities are touching it. Only entities that passed this trigger's filters are considered."
+]
+
+@PointClass base(Targetname) = void_hint_system :  "An entity used to control Void's hint system. You should only have 1 on the map."
+[
+	input SetHintLifetime(float) : "Sets the hint lifetime."
+	input SetHintFadeOutTime(float) : "Set the hint fadeout time."
+	input SetHintTitleText(string) : "Sets the hint title text and displays it immediately. Can use localization and keybinds in %%."
+	input SetHintImage(string) : "Sets the hint image path and displays it immediately."
+	input SetHintText(string) : "Sets the hint text and displays it immediately. Can use localization and keybinds in %%."
+	input PauseGame(void) : "Pauses the game."
+]
+
+@PointClass base(Targetname) = void_collectible_proxy :  "An entity that is used to query for the status of collectibles."
+[
+	input RequestCollectedStateOf(integer) : "Requests the status of a collectible with a given collectible ID. This will fire either the PlayerHasCollectible or PlayerDoesNotHaveCollectible output with the same collectible ID given to the input."
+	output PlayerHasCollectible(integer) : "Fired in response to RequestCollectedState input. Outputs the same ID as the input."
+	output PlayerDoesNotHaveCollectible(integer) : "Fired in response to RequestCollectedState input. Outputs the same ID as the input."
+
+	input RequestNumberCollected(void) : "Requests the number of collectibles the player currently has. This will fire the PlayerNumberCollected output."
+	output PlayerNumberCollected(integer) : "Fired in response to RequestNumberCollected input. Outputs the number of collectibles the player has collected."
+
+	input SetTotalCollectibles(integer) : "Sets the total number of collectibles."
+	input RequestNumTotalCollectibles(void) : "Requests the total number of collectibles. This will fire the NumberTotalCollectibles output."
+	output NumberTotalCollectibles(integer) : "Fired in response to RequestNumTotalCollectibles input. Outputs the total number of collectibles."
+
+	output OnPlayerCollectiblePickup(integer) : "Fired when a player picks up a collectible item. Outputs the collectible ID."
+]
+
+@PointClass base(Targetname) = point_cutscenecontrol : "CutScene Controller"
+[
+	// Inputs
+	input PlayCutScene(string) : "Plays specified cutscene in scripts/cutscene_text.txt"
+	input Deactivate(void) : "Deactivates the control. You need to call this from the OnEndCutScene or OnEndVideo output or otherwise."
+	input PlayVideo(string) : "Plays video located in media folder. Don't put the .bik extension."
+
+	//Outputs
+	output OnEndCutScene(void) : "Fired when the cutscene ends"
+	output OnEndVideo(void) : "Fired when the video ends"
+]
+
+@PointClass base(Targetname) = void_letterbox_control : "Letterbox Controller"
+[
+	// Inputs
+	input TurnOn(void) : "Turns on the letterbox effect."
+	input TurnOff(void) : "Turns offn the letterbox effect."
+]

@@ -1,0 +1,6 @@
+"Lightmappedgeneric"
+{
+	"$baseTexture" "celshade/wallMiddleTest"
+	"$bumpmap" "celshade/wallMiddleTest_nmap"
+	//"$lightwarptexture" "celshade/lightwarp/lightwarp"
+}

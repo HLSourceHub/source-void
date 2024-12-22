@@ -1,0 +1,14 @@
+"LightmappedGeneric"
+{
+	"$basetexture" "vgui/il"
+	"$bumpmap" "celshade\normal64"
+//	"$envmapmask" "vgui/il_Smap"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[0.33 0.33 0.33]" 
+
+	"$phong" "1"
+	"$phongexponent" "1"
+	"$phongboost" "33"	
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+}

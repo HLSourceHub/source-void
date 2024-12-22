@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/crystalball_overlay.vtf"
+	"$translucent"		"1"
+}

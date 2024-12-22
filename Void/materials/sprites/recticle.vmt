@@ -1,0 +1,24 @@
+"Sprite"
+{
+	"$spriteorientation" "oriented"
+	"$spriteorigin" "[ 0.50 0.50 ]"
+	"$basetexture" "sprites/recticle"
+	"$ignorez" "1"
+	"$additive" "1"
+	"$translucent" "1"
+	"$alpha" "1"
+	
+	"$rotation"		"0"
+	
+	"Proxies"
+	{
+		Sine // a proxy which produces a sine wave
+		{
+			resultVar	$alpha // The shader parameter to be manipulated
+			sineperiod	2
+			sinemin		0.5
+			sinemax		1
+		}
+	}
+}
+

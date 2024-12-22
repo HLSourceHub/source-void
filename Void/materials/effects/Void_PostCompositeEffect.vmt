@@ -1,0 +1,16 @@
+Void_PostComposite
+{
+	"$overlaytexture"	"effects/tunnelvision"
+	"$noisetexture"		"effects/noise"
+	"$noiseframe"		"0"
+	
+	"Proxies"
+	{
+		"AnimatedTexture"
+		{
+			"animatedtexturevar" "$noisetexture"
+			"animatedtextureframenumvar" "$noiseframe"
+			"animatedtextureframerate" "30.0"
+		}
+	}
+}

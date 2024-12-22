@@ -1,0 +1,6 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/floor/floor128_DMap"
+	"$normalmap" "void/floor/floor128_NMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+}

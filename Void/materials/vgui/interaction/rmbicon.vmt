@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/interaction/rmbicon"
+	"$translucent"		"1"
+}

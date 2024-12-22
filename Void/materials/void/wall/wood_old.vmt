@@ -1,0 +1,6 @@
+"LightMappedGeneric"
+{
+	"$basetexture" "void\wall\wood_old"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "wood"
+}

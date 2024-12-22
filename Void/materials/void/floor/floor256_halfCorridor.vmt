@@ -1,0 +1,7 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/floor/floor256_halfcorridor"
+	"$normalmap" "void/floor/floor256_halfcorridor_NMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "tile"
+}

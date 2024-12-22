@@ -1,0 +1,37 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/weapons/hand_glove"
+	"$bumpmap" "models/weapons/hand_glove_Nmap"
+	"$detail" "models/weapons/hand_glove_detail"
+	"$detailscale" "1"
+	"$detailblendfactor" 1.0
+	"$detailblendmode" 5
+	"$model" "1"
+	
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.2"	
+	"$phongexponenttexture" "models/weapons/hand_glove_Smap"
+	"$phongfresnelranges"	"[0.5 0.5 0.5]"
+	
+	"Proxies"
+	{
+		Sine // a proxy which produces a sine wave
+		{
+			resultVar	$detailblendfactor // The shader parameter to be manipulated
+			sineperiod	2
+			sinemin		0.1
+			sinemax		1
+		}
+		
+		ToggleTexture
+		{
+			 toggleTextureVar			$baseTexture
+			 toggleTextureFrameNumVar	$frame
+			 toggleShouldWrap			0	
+		}     
+	}	
+}
+
+
+

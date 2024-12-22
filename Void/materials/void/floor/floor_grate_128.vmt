@@ -1,0 +1,7 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/floor/floor_grate_128"
+	"$bumpmap" "void/floor/floor_grate_128_NMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "metal"
+}

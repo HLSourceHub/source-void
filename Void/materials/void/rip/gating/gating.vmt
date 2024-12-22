@@ -1,0 +1,23 @@
+"sdk_lightmappedgeneric_dx9"
+{
+	"$baseTexture" "void/gating/gating_DMap"
+	"$bumpmap" "void/gating/gating_nMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+//	"$translucent" "1"
+	"$alphatest" "1"
+	
+	"$cullmode" "0"
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

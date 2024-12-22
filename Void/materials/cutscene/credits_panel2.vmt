@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "cutscene\transparent"
+	"$vertexalpha" 1
+}

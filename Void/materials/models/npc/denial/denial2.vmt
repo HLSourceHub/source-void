@@ -1,0 +1,21 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" "models/npc/denial/denial_texture_diffuse"
+	//$bumpmap models/weapons/hand_ref_originNormalsMap
+//	"$alphatest" "1"
+	$translucent 1
+	"$nocull" "1"
+//	$model 1
+	
+	"$phong" 1
+	"$phongexponent" "0"
+	"$phongboost" "0"	
+	"$halflambert" "1"
+//	$lightwarptexture materials\celshade\lightwarp\cellShade3d
+	"$phongfresnelranges"	"[1 3 8]"
+
+	
+	
+	
+}
+

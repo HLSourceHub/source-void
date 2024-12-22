@@ -1,0 +1,31 @@
+"VertexLitGeneric"
+{
+//	"$baseTexture" "models/weapons/hand_UI_eye_2"
+	"$baseTexture" "vgui/black"
+	"$translucent" "1"
+	
+	"$detail" "models/weapons/hand_UI_eye_2"
+	"$detailscale" "1"
+	"$detailblendfactor" .01
+	"$detailblendmode" 5
+	
+	"Proxies"
+	{
+		VoidRip // a proxy which produces a sine wave
+		{
+			resultVar	$detailblendfactor // The shader parameter to be manipulated
+			mode		2
+			ripID		1
+		}
+		VoidRip // a proxy which produces a sine wave
+		{
+			resultVar	$alpha // The shader parameter to be manipulated
+			mode		1
+			ripID		1
+		}
+	}	
+	
+}
+
+
+

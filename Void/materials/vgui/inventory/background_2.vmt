@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/background_base_3"
+	"$translucent"		"1"
+}

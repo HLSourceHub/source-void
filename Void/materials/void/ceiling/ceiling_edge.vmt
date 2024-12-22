@@ -1,0 +1,7 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/ceiling/ceiling_edge_dmap"
+	"$normalmap" "void/wall/ceiling_edge_nmap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+	"$surfaceprop" "tile"
+}

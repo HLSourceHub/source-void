@@ -1,0 +1,41 @@
+"SDK_UnlitGeneric"
+{
+	"$basetexture" "models\prop\platforms\platform_lightA"
+	"$nocull" "1"
+	"$translucent" "1" 
+	
+	"$phong" "1"
+	"$phongexponent" "0.5"
+	"$phongboost" "0.5"	
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+	
+	"$rotation" "0"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+		"LinearRamp"
+		{
+			"rate"	"20.0"
+			"initialValue" "0"
+			"resultVar" "$rotation"
+		}
+
+		"TextureTransform"
+		{
+			"translatevar" "[0 0]"
+			"resultVar" "$basetexturetransform"
+			"rotateVar" "$rotation"
+		}
+	}
+}

@@ -1,0 +1,8 @@
+"LightMappedGeneric"
+{
+"$basetexture" "void\EDecals\soil"
+"$normalmap" "void\EDecals\soil_NMap"
+"$decal" 1
+"$decalscale" 1
+"$translucent" 1
+}

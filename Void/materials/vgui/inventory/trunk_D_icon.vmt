@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/trunk_D_icon"
+	"$translucent"		"1"
+}

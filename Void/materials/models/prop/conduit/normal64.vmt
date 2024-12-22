@@ -1,0 +1,27 @@
+"SDK_UnlitGeneric"
+{
+	"$baseTexture" "models/prop/conduit/normal64"
+	"$bumpmap" "models/prop/conduit/normal64"
+	"$model" "1"
+	
+	"$phong" "1"
+	"$phongexponent" "0"
+	"$phongboost" "0"	
+	//"$lightwarptexture" "celshade/lightwarp/lightwarp"
+	"$phongfresnelranges"	"[0 0 0]"
+	"$halflambert" "1"	
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

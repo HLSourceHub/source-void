@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/key_icon"
+	"$translucent"		"1"
+}

@@ -1,0 +1,35 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\prop\switchgear\key"
+//	"$bumpmap" "models\prop\switchgear\metal_dark_dirty_NMap"
+	"$surfaceprop" "metal"
+//	"$translucent" "1" 
+	"$alphatest"	"1"
+	"$alpha"		"0"
+	
+	"$phong" "1"
+	"$phongexponent" "33"
+	"$phongboost" "0.2"	
+
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "1"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+		VoidSwitchGear
+		{
+			resultVar	$alpha
+			part		"1"		// key
+		}
+	}
+}

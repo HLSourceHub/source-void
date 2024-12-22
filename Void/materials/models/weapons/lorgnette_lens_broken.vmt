@@ -1,0 +1,15 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/weapons/lorgnette_lens_broken"
+	"$bumpmap" "models/weapons/lorgnette_lens_broken_normal"
+	"$envmap" "env_cubemap"
+	"$surfaceprop" "glass"
+	"$translucent" "1" 
+	
+	"$phong" "1"
+	"$phongexponent" "50"
+	"$phongboost" "1"	
+
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+}

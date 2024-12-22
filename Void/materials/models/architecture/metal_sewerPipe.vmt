@@ -1,0 +1,28 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\architecture\metal_sewerPipe"
+	"$envmapmask" "models\architecture\metal_sewerPipe_SMap"
+	
+	
+	"$phong" "1"
+	"$phongexponent" "99"
+	"$phongboost" "0.1"	
+	"$phongexponenttexture" "models\architecture\metal_sewerPipe_SMap"
+	
+	"$phongfresnelranges"	"[0.05 0.5 1]"
+	"$halflambert" "0"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

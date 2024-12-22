@@ -1,0 +1,25 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\prop\gating\gatepost_dmap"
+	"$bumpmap" "models\prop\gating\gatepost_nmap"
+	
+	"$phong" "1"
+	"$phongexponent" "10"
+	"$phongboost" "0.5"	
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "0"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

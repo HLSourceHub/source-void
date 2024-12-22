@@ -1,0 +1,27 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\prop\paintings\pictureFrame_B_DMap"
+	"$bumpmap" "models\prop\paintings\pictureFrame_B_NMap"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[0.66 0.66 0.66]" 
+	
+	"$phong" "1"
+	"$phongexponent" "66"
+	"$phongboost" "0.1"	
+	"$phongfresnelranges"	"[.5 3 5]"
+	"$halflambert" "1"
+	
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

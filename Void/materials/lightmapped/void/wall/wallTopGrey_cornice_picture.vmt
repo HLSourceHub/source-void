@@ -1,0 +1,6 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/wall/wallTopGrey_cornice_picture_DMap"
+	"$normalmap" "void/wall/wallTopGrey_cornice_picture_NMap"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+}

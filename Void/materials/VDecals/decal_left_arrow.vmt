@@ -1,0 +1,9 @@
+"void_decal"
+{
+"$basetexture" "VDecals\decal_left_arrow"
+"$decal" 1
+"$decalscale" 1
+"$translucent" 1
+"$normalmap" "celshade/normal64"
+//"$lightwarptexture" "void/lightwarps/lightwarp"
+}

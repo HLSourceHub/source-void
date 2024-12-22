@@ -1,0 +1,20 @@
+"SDK_VertexLitGeneric"
+{
+	"$basetexture" "models\prop\displayCabinet\felt_green_dirty_dmap"
+	"$bumpmap" "models\prop\displayCabinet\felt_green_nmap"
+
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+
+	}
+}

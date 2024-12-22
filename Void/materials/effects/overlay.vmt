@@ -1,0 +1,8 @@
+UnlitGeneric
+{
+	"$basetexture"	"vgui/black"
+//	"$additive"		"1"
+	"$translucent"	"1"
+	"$ignorez"		"1"
+	"$alpha"		"1.0"
+}

@@ -1,0 +1,23 @@
+"SDK_LightmappedGeneric_DX9"
+//"LightMappedGeneric"
+{
+	"$baseTexture" "void/floor/floor256_halfcorridor_dirt"
+	"$bumpmap" "void/floor/floor_dirt_NMap"
+
+	"$surfaceprop" "tile"
+	
+	"$cullmode" "0"
+	"$ripinfo" "[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]"
+	"Proxies"
+	{
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$ripinfo // The shader parameter to be manipulated
+		}
+		VoidRipInfo // a proxy which produces a sine wave
+		{
+			resultVar	$cullmode // The shader parameter to be manipulated
+			mode		"1"
+		}
+	}
+}

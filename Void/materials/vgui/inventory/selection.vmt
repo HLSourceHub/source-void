@@ -1,0 +1,22 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/overlay_rip_selection"
+	"$translucent"		"1"
+	
+	"$rotation"			"0"
+	
+	"Proxies"
+	{
+		"LinearRamp"
+		{
+			"initialValue"	"0"
+			"rate"			"50"
+			"resultVar"		"$rotation"
+		}
+		"TextureTransform"
+		{
+			"rotateVar"		"$rotation"
+			"resultVar"		"$basetexturetransform"
+		}
+	}
+}

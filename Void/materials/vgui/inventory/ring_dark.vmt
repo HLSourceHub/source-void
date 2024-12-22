@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/overlay_rip_charging_ring_dark"
+	"$translucent"		"1"
+}

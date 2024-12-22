@@ -1,0 +1,101 @@
+// Void's Wrath and Hope weapon (The Hand)
+
+WeaponData
+{
+	// Weapon data is loaded by both the Game and Client DLLs.
+	"printname"	"#Void_Conduit"	// Name for showing in HUD, etc.
+	"viewmodel"			"models/weapons/v_hand.mdl"	// View model of this weapon
+	"playermodel"			"models/weapons/v_hand.mdl"	// Model of this weapon seen carried by the player
+	"anim_prefix"			"ar2"	// Prefix of the animations that should be used by the player carrying this weapon
+	"bucket"			"0"	// inventory slot.
+	"bucket_position"		"1"	// position in the inventory slot.
+	"bucket_360"			"2"
+	"bucket_position_360"		"0"
+
+	"clip_size"			"-1"	// max primary clip size (-1 if no clip)
+	"default_clip"			"-1"	// amount of primary ammo in the gun when it's created
+
+	"clip2_size"			"-1"	// max secondary clip size (-1 if no clip)
+	"default_clip2"			"-1"	// amount of secondary ammo in the gun when it's created
+
+	"primary_ammo"			"None"	// "primary" ammo type
+	"secondary_ammo"		"None"	// "secondary" ammo type
+
+	"weight"				"6"	// this value used to determine this weapon's importance in autoselection.
+	"rumble"			"4"	// Which rumble effect to use when fired? (xbox)
+	//"item_flags"			"198"
+	//"ITEM_FLAG_SELECTONEMPTY"	"0"	// 2^0 == 1
+	"ITEM_FLAG_NOAUTORELOAD"	"1"	// 2^1 == 2
+	"ITEM_FLAG_NOAUTOSWITCHEMPTY"	"1"	// 2^2 == 4
+	//"ITEM_FLAG_LIMITINWORLD"	"0"	// 2^3 == 8
+	//"ITEM_FLAG_EXHAUSTIBLE"	"0"	// 2^4 == 16
+	//"ITEM_FLAG_DOHITLOCATIONDMG"	"0"	// 2^5 == 32
+	"ITEM_FLAG_NOAMMOPICKUPS"	"1"	// 2^6 == 64
+	"ITEM_FLAG_NOITEMPICKUP"	"1"	// 2^7 == 128
+
+	// Other flags
+	//"showusagehint"	"0"	// Show on-screen hints about how to use the weapon. Defaults false.
+	//"autoswitchto"	"1"	// Whether to switch to this gun on running out of ammo for another. Defaults true.
+	//"autoswitchfrom"	"1"	// Whether to switch away from this weapon when picking up another weapon or ammo. Defaults true.
+	//"BuiltRightHanded"	"1"	// Weapon viewmodel is right-handed. Defaults true.
+	//"AllowFlipping"	"1"	// Allow the viewmodel to be mirrored if the user wants left handed weapons. Defaults true. 
+	//"MeleeWeapon"	"0"	// Weapon is a crowbar, knife, fists, etc. Defaults false.
+	
+	// Sounds for the weapon. There is a max of 16 sounds per category (i.e. max 16 "single_shot" sounds)
+	SoundData
+	{
+		"special1"		""
+		"empty"			""
+		"double_shot"		"Hope.Shoot"
+		"reload"		""
+		"single_shot"		""
+
+		// NPC SECTION
+		"single_shot_npc"	""
+		"reload_npc"		""
+		"double_shot_npc"	"Hope.Shoot"
+	}
+
+	// Weapon Sprite data is loaded by the Client DLL.
+	TextureData
+	{
+		"weapon"
+		{
+				"font"		"WeaponIcons"
+				"character"	"l"
+		}
+		"weapon_s"
+		{	
+				"font"		"WeaponIconsSelected"
+				"character"	"l"
+		}
+		"weapon_small"
+		{
+				"font"		"WeaponIconsSmall"
+				"character"	"l"
+		}
+		"ammo"
+		{
+				"font"		"WeaponIconsSmall"
+				"character"	"u"
+		}
+		"ammo2"
+		{
+				"font"		"WeaponIconsSmall"
+				"character"	"z"
+		}
+		"crosshair"
+		{
+				"font"		"Crosshairs"
+				"character"	"Q"
+		}
+		"autoaim"
+		{
+				"file"		"sprites/crosshairs"
+				"x"			"0"
+				"y"			"48"
+				"width"		"24"
+				"height"	"24"
+		}
+	}
+}

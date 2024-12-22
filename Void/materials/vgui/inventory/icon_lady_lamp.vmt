@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture"		"vgui/inventory/icon_lady_lamp"
+	"$translucent"		"1"
+}

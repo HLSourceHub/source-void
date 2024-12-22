@@ -1,0 +1,6 @@
+"LightMappedGeneric"
+{
+	"$baseTexture" "void/floor/floor256_halfcorridor_DMap"
+	"$normalmap" "celshade/normal64"
+	//"$lightwarptexture" "void/lightwarps/lightwarp"
+}
